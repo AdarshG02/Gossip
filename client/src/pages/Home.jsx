@@ -112,7 +112,7 @@ function Home() {
 
       try {
         const res = await fetch(
-          `http://localhost:${port}/api/messages/${selectedUser._id}`,
+          `https://gossip-uvaa.onrender.com/api/messages/${selectedUser._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
