@@ -23,7 +23,9 @@ function Home() {
   const decoded = token ? jwtDecode(token) : null;
   const currentUserId = decoded?.id;
 
-  const port = import.meta.env.VITE_PORT;
+  //const port = import.meta.env.VITE_PORT;
+
+  const API = import.meta.env.VITE_API_URL;
 
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function Home() {
     // Fetch users
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`https://gossip-uvaa.onrender.com/api/users`, {
+        const res = await fetch(`${API}/api/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -112,7 +114,7 @@ function Home() {
 
       try {
         const res = await fetch(
-          `https://gossip-uvaa.onrender.com/api/messages/${selectedUser._id}`,
+          `${API}/api/messages/${selectedUser._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -152,7 +154,7 @@ function Home() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`https://gossip-uvaa.onrender.com/api/messages`, {
+      const res = await fetch(`${API}/api/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

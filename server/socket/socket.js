@@ -7,7 +7,7 @@ const onlineUsers = new Map();
 export const initSocket = (server) => {
     io = new Server(server, {
         cors:{
-            origin: "http://localhost:5173",
+            origin: "https://gossip-delta.vercel.app/",
             methods: ["GET", "POST"],
         },
     });
@@ -44,14 +44,9 @@ export const initSocket = (server) => {
         onlineUsers.set(String(socket.userId), socket.id);
 
         socket.on("disconnect", () => {
-            for(let [userId, socketId] of onlineUsers.entries()) {
-                if(socketId === socket.id){
-                    onlineUsers.delete(userId);
-                    break;
-                }
-            }
-            console.log("User disconnected:", socket.id);
-        });
+            onlineUsers.delete(String(socket.userId));
+            console.log("User disconnected:", socket.userId);
+          });
     });
 };
 

@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config({path: 'D:/projects/RealTimeCodeCollaboration/Distraction/Gossip/server/.env'});
+dotenv.config();
 
 import mongoose from 'mongoose';
 

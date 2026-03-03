@@ -5,7 +5,8 @@ function Auth() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
 
-//   const port = process.env.PORT;
+  //const port = process.env.PORT;
+  const API = import.meta.env.VITE_API_URL;
 
   const [formData, setFormData] = useState({
     username: "",
@@ -24,8 +25,8 @@ function Auth() {
     e.preventDefault();
   
     const endpoint = isLogin
-      ? "https://gossip-uvaa.onrender.com/api/login"
-      : "https://gossip-uvaa.onrender.com/api/signup";
+      ? `${API}/api/login`
+      : `${API}/api/signup`;
   
     try {
       const res = await fetch(endpoint, {

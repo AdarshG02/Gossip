@@ -1,8 +1,9 @@
 import { io } from "socket.io-client";
 
-const port = import.meta.env.VITE_PORT;
+//const port = import.meta.env.VITE_PORT;
+const API = import.meta.env.VITE_API_URL;
 
-const socket = io(`https://gossip-uvaa.onrender.com`, {
+const socket = io(`${API}`, {
   auth: {
     token: localStorage.getItem("token"),
   },
