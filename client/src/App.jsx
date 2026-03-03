@@ -1,25 +1,36 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./pages/Auth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
-// import Editor from "./pages/Editor";
 
 function App() {
+  const isAuthenticated = localStorage.getItem("token");
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/gossip/auth" element={<Auth />} />
+
+        {/* Root redirect */}
         <Route
-            path="/gossip/home"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
+          path="/"
+          element={
+            isAuthenticated
+              ? <Navigate to="/gossip/home" replace />
+              : <Navigate to="/gossip/auth" replace />
+          }
         />
 
-        {/* <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/room/:roomId" element={<Editor />} /> */}
+        <Route path="/gossip/auth" element={<Auth />} />
+
+        <Route
+          path="/gossip/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

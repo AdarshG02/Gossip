@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 const port = import.meta.env.VITE_PORT;
 
-const socket = io(`http://localhost:${port}`, {
+const socket = io(`https://gossip-uvaa.onrender.com`, {
   auth: {
     token: localStorage.getItem("token"),
   },

@@ -57,7 +57,7 @@ function Home() {
     // Fetch users
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`http://localhost:${port}/api/users`, {
+        const res = await fetch(`https://gossip-uvaa.onrender.com/api/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -94,6 +94,12 @@ function Home() {
     };
   }, []);
 
+
+  const handleKeyDown = (e) => {
+    if(e.key === "Enter"){
+      handleSendMessage();
+    }
+  };
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -146,7 +152,7 @@ function Home() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`http://localhost:${port}/api/messages`, {
+      const res = await fetch(`https://gossip-uvaa.onrender.com/api/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -250,6 +256,7 @@ function Home() {
                   type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
                   style={{
                     flex: 1,

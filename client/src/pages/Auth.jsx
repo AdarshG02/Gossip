@@ -24,8 +24,8 @@ function Auth() {
     e.preventDefault();
   
     const endpoint = isLogin
-      ? "http://localhost:4000/api/login"
-      : "http://localhost:4000/api/signup";
+      ? "https://gossip-uvaa.onrender.com/api/login"
+      : "https://gossip-uvaa.onrender.com/api/signup";
   
     try {
       const res = await fetch(endpoint, {
