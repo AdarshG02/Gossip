@@ -7,6 +7,8 @@ const socket = io(`${API}`, {
   auth: {
     token: localStorage.getItem("token"),
   },
+
+  transports: ["websocket"],
 });
 
 socket.on("connect", () => {
