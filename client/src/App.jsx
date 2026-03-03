@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./pages/Auth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
@@ -7,7 +7,7 @@ function App() {
   const isAuthenticated = localStorage.getItem("token");
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         {/* Root redirect */}
@@ -30,9 +30,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+    
       </Routes>
-    </BrowserRouter>
+      </HashRouter>
   );
 }
 
